@@ -1,15 +1,23 @@
+var dbService = require('../services/dbService.js')();
+
 module.exports = {
     createBlackCard: function () {
+
+        var getBlackCard = dbService.getBlackCard();
+
         return {
-            "cardId": 111, // This should be a query
-            "body": "This is the contents of the card" // This should also be a query
+            "cardId": getBlackCard.ID,
+            "body": getBlackCard.body
         }
     },
     createWhiteCard: function (playerId) {
+
+        var getWhiteCards = dbService.getWhiteCards();
+
         return {
-            "cardId": 222, // This should be a query
-            "body": "This is the contents of the card", // This should also be a query
-            "owner": playerId // This is a player.json id
+            "cardId": getWhiteCards.ID,
+            "body": getWhiteCards.body,
+            "owner": playerId
         }
     },
 
